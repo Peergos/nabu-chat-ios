@@ -57,7 +57,7 @@
         <dependency>
             <groupId>org.peergos</groupId>
             <artifactId>nabu</artifactId>
-            <version>0.7.0</version>
+            <version>0.7.1</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/nabu.jar</systemPath>
         </dependency>
@@ -69,6 +69,7 @@
             <id>Gluon</id>
             <url>https://nexus.gluonhq.com/nexus/content/repositories/releases</url>
         </repository>
+
     </repositories>
 
     <build>
@@ -93,7 +94,7 @@
                 <artifactId>gluonfx-maven-plugin</artifactId>
                 <version>${gluonfx.plugin.version}</version>
                 <configuration>
-                    <target>${gluonfx.target}</target>
+                    <target>ios-sim</target>
                     <attachList>
                         <list>display</list>
                         <list>lifecycle</list>
@@ -106,10 +107,13 @@
                         <arg>-H:+ReportExceptionStackTraces</arg>
                         <arg>-H:Log=registerResource</arg>
                         <arg>--native-image-info</arg>
-                        <arg> --report-unsupported-elements-at-runtime</arg>
+                        <arg>--report-unsupported-elements-at-runtime</arg>
                         <arg>--verbose</arg>
                     </nativeImageArgs>
                     <mainClass>${mainClassName}</mainClass>
+                    <releaseConfiguration>
+                        <simulatorDevice>iPhone 15</simulatorDevice>
+                    </releaseConfiguration>
                 </configuration>
             </plugin>
         </plugins>
